@@ -1,9 +1,26 @@
+function checkVowel(str) {
+  let vowel = 'AIUEO'
+  let count = 0
+  for (let a = 0; a < str.length; a++) {
+    for (let b = 0; b < vowel.length; b++) {
+      if (str[a] === vowel[b]) {
+        count++
+      }
+    }
+  }
+  if (count === str.length) {
+    return true
+  } else {
+    return false
+  }
+}
+
 function vowelArr(jumlahRow, jumlahCol) {
   let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let vowel = 'AIUEO'
   let mainArr = []
   let mainStr = []
-  let urutan = 0
+  let trueCount = 0
   for (let a = 0; a < jumlahRow; a++) {
     let fillerArr = []
     mainArr.push(fillerArr)
@@ -13,21 +30,9 @@ function vowelArr(jumlahRow, jumlahCol) {
   }
   for (let a = 0; a+1 < jumlahRow; a++) {
     for (let b = 0; b+1 < jumlahCol; b++) {
-      mainStr += mainArr[a][b] + mainArr[a][b+1] + mainArr[a+1][b] + mainArr[a+1][b+1]
-    }
-  }
-  let count = 0
-  let trueCount = 0
-  for (let c = mainStr.length-1; c >= 0; c--) {
-    for (let d = 0; d < vowel.length; d++) {
-      if (mainStr[c] === vowel[d]) {
-        count++
-      }
-      if (c % 4 === 0) {
-        if (count === 4) {
-          trueCount++
-          count = 0
-        }
+      if (checkVowel(mainArr[a][b]) === true && checkVowel(mainArr[a][b+1]) === true && checkVowel(mainArr[a+1][b]) === true && checkVowel(mainArr[a+1][b+1]) === true) {
+        mainStr += mainArr[a][b] + mainArr[a][b+1] + mainArr[a+1][b] + mainArr[a+1][b+1]
+        trueCount++
       }
     }
   }
@@ -35,4 +40,4 @@ function vowelArr(jumlahRow, jumlahCol) {
   return trueCount
 }
 
-console.log(vowelArr(3, 3))
+console.log(vowelArr(10, 3))
