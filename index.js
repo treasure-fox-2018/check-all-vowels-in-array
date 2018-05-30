@@ -10,26 +10,33 @@ function checkAllVowels(jmlRow, jmlCol) {
        arr.push(isi)
     }
 
-    var indexVowel = []
+
+    function isVowel(data) {
+        if (data == 'a' || data == 'i' || data == 'u' || data == 'e' || data == 'o') {
+            return true
+        }
+    }
+
+    count = 0
     for (let i = 0; i < jmlRow; i++) {
-        var arrIsi = []
         for (let j = 0; j < jmlCol; j++) {
-            if (arr[i][j] == 'a' || arr[i][j] == 'i' || arr[i][j] == 'u' || arr[i][j] == 'e' || arr[i][j] == 'o') {
-                arrIsi.push(j)
+            if (arr[i][j] !== undefined && isVowel(arr[i][j])) {
+                if (arr[i+1] !== undefined) {
+                    if (arr[i][j+1] !== undefined && isVowel(arr[i][j+1])) {
+                        if (arr[i+1][j] !== undefined && isVowel(arr[i+1][j])) {
+                            if (arr[i+1][j+1] !== undefined && isVowel(arr[i+1][j+1])) {
+                                count++
+                            }
+                        }
+                    }
+                }
             }
         }
-        indexVowel.push(arrIsi)
     }
-
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-            
-        }
-    }
-
+        
     console.log(arr);
     
-    return indexVowel
+    return count
 }
 
 console.log(checkAllVowels(6,4));
