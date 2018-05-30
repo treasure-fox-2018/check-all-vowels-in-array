@@ -1,4 +1,4 @@
-function randomAbjad (row, col) {
+function randomAbjad(row, col) {
   const abjad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let abjadArr = []
 
@@ -13,14 +13,30 @@ function randomAbjad (row, col) {
   return abjadArr
 }
 
-function checkAllVowelArray (row, col) {
+function vowelArray(row, col) {
   let randomHuruf = randomAbjad(5, 4)
-  
-  // for (let a = 0; a < randomHuruf.length; a++) {
-
-  // }
   console.log(randomHuruf)
-}
-checkAllVowelArray()
+  var count = 0
 
-// console.log(randomAbjad(5, 4))
+  for (var a = 0; a < randomHuruf.length-1; a++) {
+    for (var b = 0; b < randomHuruf[a].length-1; b++) {
+      if (check(randomHuruf[a][b]) === true) {
+        if (check(randomHuruf[a][b+1]) === true) {
+          if (check(randomHuruf[a+1][b]) === true) {
+            if (check(randomHuruf[a+1][b+1]) === true) {
+              count++
+            }
+          }
+        }
+      }
+    }
+  }
+  console.log(count)
+}
+vowelArray()
+
+function check(input) {
+  if (input === 'A' || input === 'I' || input === 'U' || input === 'E' || input === 'O') {
+    return true
+  }
+}
