@@ -74,7 +74,7 @@ function checkStrVowels(str) {
 function createNestedArr(jumlahrow, jumlahCol) {
     var boardArr = [];
     var randomNumber = 0;
-    var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     for (let i = 0; i < jumlahrow; i++) {
         let innerBoardArr = [];
@@ -92,7 +92,5 @@ function createNestedArr(jumlahrow, jumlahCol) {
 }
 
 let newBoard = createNestedArr(5,3);
-
-console.log(checkAllVowels(alphabetBoard2));
 
 console.log(checkAllVowels(newBoard));
