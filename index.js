@@ -1,6 +1,6 @@
 function generateBoard(row,col){
     var bigArray = []
-    var alphabet = "abcdefghijklmnopqrstuvwxyz"
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     for(let i=0; i<row; i++){
         var smallArray = []
         for(let j=0; j<col; j++){
@@ -22,7 +22,7 @@ function checkAllVowels(input){
             // console.log(lookup)
             for(let x=0; x<lookup.length; x++){
                 for(let z=0; z<vowels.length; z++){
-                    if(lookup[x] === vowels[z]){
+                    if(lookup[x].toLowerCase() === vowels[z]){
                         count+=1
                     }
                 }
