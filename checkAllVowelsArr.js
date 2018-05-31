@@ -2,7 +2,7 @@ function checkVowels(row,col){
 
   let abjad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let mainBoard = [];
-
+//s
   for ( let i = 0 ; i < row ; i++){
     let rowArr = []
     mainBoard.push(rowArr)
@@ -12,7 +12,7 @@ function checkVowels(row,col){
     }
   }
   for (var k = 0 ; k < col[j].length ; k++){
-    let tampung = 
+    let tampung =
   }
 // return mainBoard
 
