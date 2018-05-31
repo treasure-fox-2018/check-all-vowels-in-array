@@ -17,37 +17,33 @@ function generatedBoard (jumRow, jumCol) {
   return mainArr
 }
 // console.log(generatedBoard(5, 4))
-
-// function checkAllVowels(str) {
-//   var vocals = 'aiueo'
-//   var idxArr = []
-//   var counter = 0
-//   // console.log()
-  
-//   for (var a = 0; a < str.length; a++) {
-//     for (var b = 0; b < vocals.length; b++) {
-//       if (str[a].toLowerCase() === vocals[b]) {
-//         idxArr.push(b)
-//       }
-//     }
-//   }
-//   if (idxArr.length === str.length) {
-//     return counter++
-//   } else {
-//     return counter++
-//   }
-// }
+function checkAllVowels (str) {
+  var vocal = 'aiueoAIUEO'
+  var containIdx = []
+  for (var a = 0; a < str.length; a++) {
+    for (var b = 0; b < vocal.length; b++) {
+      if (str[a] === vocal[b]) {
+        containIdx.push(b)
+      }
+    }
+  }
+  if (containIdx.length === str.length) {
+    return true
+  } else {
+    return false
+  }
+}
 
 function getBlockVowels(arr) {
-  var vocals = 'aiueoAIUEO'
   var counter = 0
   for (var a = 0; a < arr.length - 1; a++) {
     for (var b = 0; b < arr[a].length - 1; b++) {
       // for(var i = 0; i < vocals.length; i++) {
-        if (vocals.indexOf(arr[a][b]) >= 0) {
-          if (vocals.indexOf(arr[a][b+1]) >= 0) {
-            if(vocals.indexOf(arr[a+1][b]) >= 0) {
-              if (vocals.indexOf(arr[a+1][b+1]) >= 0) {
+        // console.log(arr[a][b])
+        if (checkAllVowels(arr[a][b]) === true) {
+          if (checkAllVowels(arr[a][b+1]) === true) {
+            if(checkAllVowels(arr[a+1][b]) === true) {
+              if (checkAllVowels(arr[a+1][b+1]) === true) {
                 counter++
               }
             }
