@@ -3,8 +3,8 @@ function randomWords (str, fin) {
 }
 
 function generatedBoard (jumRow, jumCol) {
-  var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  // var alphabet = 'AIUEO'
+  // var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  var alphabet = 'AIUEO'
   var mainArr = []
   for (var a = 0; a < jumRow; a++) {
     var strArr = []
@@ -27,29 +27,22 @@ function checkAllVowels (str) {
       }
     }
   }
-  if (containIdx.length === str.length) {
-    return true
-  } else {
-    return false
-  }
+  return containIdx.length === str.length
 }
 
 function getBlockVowels(arr) {
   var counter = 0
   for (var a = 0; a < arr.length - 1; a++) {
     for (var b = 0; b < arr[a].length - 1; b++) {
-      // for(var i = 0; i < vocals.length; i++) {
-        // console.log(arr[a][b])
-        if (checkAllVowels(arr[a][b]) === true) {
-          if (checkAllVowels(arr[a][b+1]) === true) {
-            if(checkAllVowels(arr[a+1][b]) === true) {
-              if (checkAllVowels(arr[a+1][b+1]) === true) {
-                counter++
-              }
+      if (checkAllVowels(arr[a][b]) === true) {
+        if (checkAllVowels(arr[a][b+1]) === true) {
+          if(checkAllVowels(arr[a+1][b]) === true) {
+            if (checkAllVowels(arr[a+1][b+1]) === true) {
+              counter++
             }
-          } 
-        }
-      // }
+          }
+        } 
+      }
     }
   }
   return counter
