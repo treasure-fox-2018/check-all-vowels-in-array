@@ -1,48 +1,46 @@
-function stringToArray(string){
+function checkVowels(rows, cols){
     let mainArr = []
     let childArr = []
-    let splitString = string.split(',')
     let vocals = 'AIUEOaiueo'
+    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWQYZ'
     
     //membuat arr dari string
-    for(let i = 0; i < splitString.length; i++){
-        for(let j = 0; j < splitString[i].length; j++){
-            childArr.push(splitString[i][j])
+    for(let i = 0; i < rows; i++){
+        for(let j = 0; j < rows; j++){
+            childArr.push(alphabet[Math.floor(Math.random()*alphabet.length)])
         }
         mainArr.push(childArr)
         childArr = []
     }
+
+    //fungsi cek vowel
+    function check(str){
+        for(var i = 0; i < vocals.length; i++){
+            if(vocals[i] === str){
+                return true
+            }
+        }
+    }
     
-    // membuat array untuk menampung tiap blok
-    blok = ''
-    arrBlok = []
+    // mengecek vowels tiap blok
+   count = 0
    for(var i = 0; i < mainArr.length-1; i++){
         for(var j = 0; j < mainArr[i].length-1; j++){
-            blok = mainArr[i][j]+mainArr[i][j+1]+mainArr[i+1][j]+mainArr[i+1][j+1]
-            arrBlok.push(blok)
-        }
-   }
-//    console.log(arrBlok);
-   
-    
-   //cek, jika array ke sekian semuanya vocals 
-   count=0
-   jmlArr = 0
-   for(var i = 0; i < arrBlok.length; i++){
-        for(var j = 0; j < arrBlok[i].length;j++){
-            for(var k = 0; k < vocals.length; k++){
-                if(arrBlok[i][j] === vocals[k]){
-                    count++
+            if(check(mainArr[i][j]) === true){
+                if(check(mainArr[i][j+1]) === true){
+                    if(check(mainArr[i+1][j]) === true){
+                        if(check(mainArr[i+1][j+1]) === true){
+                            count++
+                        }
+                    }
                 }
             }
         }
-        if(count === 4){
-            jmlArr++
-        }
-        count = 0
    }
-   return jmlArr
+   return count
 }
 
-console.log(stringToArray('AXCY,EOOS,IUIN,MYOE,PDAI'));
+console.log(checkVowels(2,2));
+
+
 
